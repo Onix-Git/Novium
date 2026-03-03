@@ -1,30 +1,49 @@
 body {
-background: #0f172a;
-color: white;
-font-family: Arial;
-padding: 20px;
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #00ffe4;
+  padding: 20px;
 }
 
 header {
-display: flex;
-justify-content: space-between;
-align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .avatar {
-background: cyan;
-color: black;
-padding: 10px;
-border-radius: 50%;
-text-decoration: none;
+  background: #00ffe4;
+  color: black;
+  padding: 10px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-weight: bold;
 }
 
+h1,h2,h3 { margin: 10px 0; }
+
 .btn {
-display: inline-block;
-margin-top: 10px;
-padding: 8px 15px;
-background: cyan;
-color: black;
-text-decoration: none;
-border-radius: 8px;
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: cyan;
+  color: black;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.card {
+  margin-top: 20px;
+  padding: 20px;
+  background: #1e293b;
+  border-radius: 12px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 8px;
+  border: none;
 }
