@@ -1,8 +1,8 @@
-# 🚀 NOVIUM v0.1 – Ton assistant futuriste
+# 🚀 NOVIUM v0.1 – Ton assistant personnalisé avec **tes** centres d'interets
 
 
 
-**NOVIUM** est ton **assistant personnel futuriste** qui organise ta vie, analyse ton calendrier, tes notes et les newsletters d’entreprises pour te donner des **insights clairs et rapides**.
+**NOVIUM** est ton **assistant personnalisé** qui organise ta vie, analyse ton calendrier, tes notes et les newsletters d’entreprises pour te donner des **insights clairs et rapides**.
 
 ---
 
