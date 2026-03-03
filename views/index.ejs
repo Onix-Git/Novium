@@ -3,29 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <title>NOVIUM Dashboard</title>
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="public/styles.css">
 </head>
 <body>
 
 <header>
-<h1>NOVIUM</h1>
-<a href="/profile" class="avatar">
-<%= user.pseudo.charAt(0).toUpperCase() %>
-</a>
+  <h1>NOVIUM</h1>
+  <a href="profile.html" class="avatar">G</a>
 </header>
 
 <main>
+  <h2>Dashboard Principal</h2>
 
-<h2>Dashboard Principal</h2>
-
-<div class="card">
-  <p>📅 Événements : <strong><%= summary.events %></strong></p>
-  <p>📝 Notes : <strong><%= summary.notes %></strong></p>
-  <p>📧 Emails : <strong><%= summary.emails %></strong></p>
-  <p>🔗 Connexions : <strong><%= summary.connections %></strong></p>
-</div>
-
+  <div class="card">
+    <p>📅 Événements : <span id="eventCount"></span></p>
+    <p>📝 Notes : <span id="noteCount"></span></p>
+    <p>📧 Emails : <span id="emailCount"></span></p>
+    <p>🔗 Connexions : <span id="connectionCount"></span></p>
+  </div>
 </main>
+
+<script>
+// Simulation données JSON + LocalStorage
+let user = JSON.parse(localStorage.getItem("noviumUser")) || {
+  pseudo: "Guillaume",
+  email: "guillaume@email.com",
+  connections: []
+};
+
+fetch("data/calendar.json").then(r=>r.json()).then(c=>{
+  document.getElementById("eventCount").innerText = c.length;
+});
+fetch("data/notes.json").then(r=>r.json()).then(n=>{
+  document.getElementById("noteCount").innerText = n.length;
+});
+fetch("data/emails.json").then(r=>r.json()).then(e=>{
+  document.getElementById("emailCount").innerText = e.length;
+});
+
+document.getElementById("connectionCount").innerText = user.connections.length;
+</script>
 
 </body>
 </html>
