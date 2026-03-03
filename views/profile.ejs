@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header>
+<a href="/">← Retour</a>
+<h1>Profil</h1>
+</header>
+
+<p>Pseudo : <%= user.pseudo %></p>
+<p>Email : <%= user.email %></p>
+
+<h2>Connexions</h2>
+
+<% if (user.connections.length === 0) { %>
+<p>Aucune connexion</p>
+<% } else { %>
+<% user.connections.forEach(conn => { %>
+<p><%= conn.provider %> : <%= conn.email %></p>
+<% }) %>
+<% } %>
+
+<a href="/connect" class="btn">Ajouter connexion</a>
+<a href="/settings" class="btn">Paramètres</a>
+
+</body>
+</html>
