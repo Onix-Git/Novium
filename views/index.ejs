@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>NOVIUM v0.1</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>NOVIUM</h1>
+    <p class="subtitle">Ton assistant futuriste pour organiser ta vie</p>
+
+    <form action="/generate" method="post">
+      <button type="submit" class="btn">Générer Insight</button>
+    </form>
+
+    <% if(insight){ %>
+      <div class="insight">
+        <pre><%= insight %></pre>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>
