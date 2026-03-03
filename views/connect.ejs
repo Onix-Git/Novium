@@ -1,25 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<link rel="stylesheet" href="/styles.css">
+<meta charset="UTF-8">
+<title>Ajouter connexion NOVIUM</title>
+<link rel="stylesheet" href="public/styles.css">
 </head>
 <body>
 
 <header>
-<a href="/profile">← Retour Profil</a>
-<h1>Ajouter connexion</h1>
+  <a href="profile.html">← Profil</a>
+  <h1>Ajouter connexion</h1>
 </header>
 
-<form action="/addConnection" method="POST">
-<select name="provider">
-<option>Google</option>
-<option>Apple</option>
-<option>Microsoft</option>
-</select>
-
-<input type="email" name="providerEmail" placeholder="Email du compte">
-<button class="btn">Se connecter</button>
+<main>
+<form id="connectForm">
+  <select id="providerSelect">
+    <option value="Google">Google</option>
+    <option value="Apple">Apple</option>
+    <option value="Microsoft">Microsoft</option>
+  </select>
+  <input type="email" id="providerEmail" placeholder="Email du compte">
+  <button type="submit" class="btn">Se connecter</button>
 </form>
 
+<script>
+let user = JSON.parse(localStorage.getItem("noviumUser")) || {
+  pseudo: "Guillaume",
+  email: "guillaume@email.com",
+  connections: []
+};
+
+document.getElementById("connectForm").onsubmit = function(e){
+  e.preventDefault();
+  let provider = document.getElementById("providerSelect").value;
+  let email = document.getElementById("providerEmail").value;
+  if(email){
+    user.connections.push({provider,email});
+    localStorage.setItem("noviumUser", JSON.stringify(user));
+    alert(provider + " ajouté !");
+    window.location.href = "profile.html";
+  }
+};
+</script>
+
+</main>
 </body>
 </html>
