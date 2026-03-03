@@ -5,10 +5,8 @@ const path = require("path");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
 
 let user = {
   pseudo: "Guillaume",
@@ -16,37 +14,40 @@ let user = {
   connections: []
 };
 
+/* PAGE PRINCIPALE */
 app.get("/", (req, res) => {
-  res.render("index", { user, insight: null });
+  res.render("index", { user });
 });
 
-app.post("/generate", (req, res) => {
-  const calendar = JSON.parse(fs.readFileSync("./data/calendar.json"));
-  const notes = JSON.parse(fs.readFileSync("./data/notes.json"));
-  const emails = JSON.parse(fs.readFileSync("./data/emails.json"));
-
-  let insight = "💡 Insight NOVIUM\n\n";
-  insight += `Événements : ${calendar.length}\n`;
-  insight += `Notes : ${notes.length}\n`;
-  insight += `Emails entreprise : ${emails.length}\n`;
-  insight += `Connexions actives : ${user.connections.length}`;
-
-  res.render("index", { user, insight });
+/* PROFIL */
+app.get("/profile", (req, res) => {
+  res.render("profile", { user });
 });
 
+/* PARAMETRES */
+app.get("/settings", (req, res) => {
+  res.render("settings", { user });
+});
+
+/* PAGE CONNEXION */
+app.get("/connect", (req, res) => {
+  res.render("connect", { user });
+});
+
+/* UPDATE PROFIL */
 app.post("/updateProfile", (req, res) => {
   user.pseudo = req.body.pseudo;
   user.email = req.body.email;
-  res.redirect("/");
+  res.redirect("/profile");
 });
 
+/* ADD CONNECTION */
 app.post("/addConnection", (req, res) => {
   user.connections.push({
     provider: req.body.provider,
     email: req.body.providerEmail
   });
-  res.redirect("/");
+  res.redirect("/profile");
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log("NOVIUM running"));
+app.listen(3000, () => console.log("NOVIUM running"));
