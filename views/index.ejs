@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+<meta charset="UTF-8">
+<title>NOVIUM Dashboard</title>
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -13,8 +15,16 @@
 </header>
 
 <main>
-<h2>Interface principale</h2>
-<p>Bienvenue <%= user.pseudo %></p>
+
+<h2>Dashboard Principal</h2>
+
+<div class="card">
+  <p>📅 Événements : <strong><%= summary.events %></strong></p>
+  <p>📝 Notes : <strong><%= summary.notes %></strong></p>
+  <p>📧 Emails : <strong><%= summary.emails %></strong></p>
+  <p>🔗 Connexions : <strong><%= summary.connections %></strong></p>
+</div>
+
 </main>
 
 </body>
