@@ -1,0 +1,15 @@
+{
+  "name": "novium",
+  "version": "0.1.0",
+  "description": "NOVIUM v0.1 - assistant futuriste pour organiser la vie quotidienne",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "TonNom",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.9"
+  }
+}
