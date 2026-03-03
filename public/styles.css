@@ -5,54 +5,49 @@ body {
   font-family: 'Orbitron', sans-serif;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   color: #00ffe4;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.avatar {
+  background: #00ffe4;
+  color: black;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
-.container {
+main {
   text-align: center;
-  background: rgba(0,0,0,0.6);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 0 40px #00ffe4;
-  width: 90%;
-  max-width: 500px;
+  margin-top: 50px;
 }
 
-h1 {
-  font-size: 3rem;
-  margin-bottom: 0.2em;
-}
-
-.subtitle {
-  font-size: 1.2rem;
-  color: #7fffd4;
-  margin-bottom: 2em;
+.profileSection {
+  margin: 40px;
+  padding: 20px;
+  border: 1px solid #00ffe4;
+  border-radius: 15px;
 }
 
 .btn {
   background: #00ffe4;
-  color: #000;
   border: none;
-  padding: 15px 30px;
-  border-radius: 50px;
-  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 30px;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #00bfa5;
-  transform: scale(1.05);
+  margin-top: 10px;
 }
 
 .insight {
-  background: rgba(0,0,0,0.3);
-  border: 1px solid #00ffe4;
   margin-top: 20px;
   padding: 20px;
+  border: 1px solid #00ffe4;
   border-radius: 15px;
-  text-align: left;
 }
