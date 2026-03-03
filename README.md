@@ -1,6 +1,6 @@
 # 🚀 NOVIUM v0.1 – Ton assistant futuriste
 
-![NOVIUM Banner](https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif)
+
 
 **NOVIUM** est ton **assistant personnel futuriste** qui organise ta vie, analyse ton calendrier, tes notes et les newsletters d’entreprises pour te donner des **insights clairs et rapides**.
 
@@ -18,7 +18,7 @@
 
 ## ⚡ Aperçu du site
 
-![Preview NOVIUM](https://media.giphy.com/media/l0Exk8EUzSLsrErEQ/giphy.gif)
+
 
 💻 Démo live : [https://novium-chi.vercel.app](https://novium-chi.vercel.app)  
 
