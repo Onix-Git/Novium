@@ -1,24 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>NOVIUM v0.1</title>
-  <link rel="stylesheet" href="/styles.css">
+<meta charset="UTF-8">
+<title>NOVIUM</title>
+<link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>NOVIUM</h1>
-    <p class="subtitle">Ton assistant futuriste pour organiser ta vie</p>
 
-    <form action="/generate" method="post">
-      <button type="submit" class="btn">Générer Insight</button>
-    </form>
+<header>
+  <h1>NOVIUM</h1>
+  <div class="avatar"><%= user.pseudo.charAt(0).toUpperCase() %></div>
+</header>
 
-    <% if(insight){ %>
-      <div class="insight">
-        <pre><%= insight %></pre>
-      </div>
-    <% } %>
-  </div>
+<main>
+  <h2>Ton assistant futuriste</h2>
+
+  <form action="/generate" method="POST">
+    <button class="btn">Générer Insight</button>
+  </form>
+
+  <% if (insight) { %>
+    <div class="insight">
+      <pre><%= insight %></pre>
+    </div>
+  <% } %>
+</main>
+
+<section class="profileSection">
+  <h2>Profil</h2>
+  <p><strong>Pseudo :</strong> <%= user.pseudo %></p>
+  <p><strong>Email :</strong> <%= user.email %></p>
+
+  <h3>Modifier profil</h3>
+  <form action="/updateProfile" method="POST">
+    <input type="text" name="pseudo" placeholder="Pseudo">
+    <input type="email" name="email" placeholder="Email">
+    <button class="btn">Enregistrer</button>
+  </form>
+
+  <h3>Connexions</h3>
+  <% if (user.connections.length === 0) { %>
+    <p>Aucune connexion</p>
+  <% } else { %>
+    <% user.connections.forEach(conn => { %>
+      <p><%= conn.provider %> : <%= conn.email %></p>
+    <% }) %>
+  <% } %>
+
+  <h3>Ajouter une connexion</h3>
+  <form action="/addConnection" method="POST">
+    <select name="provider">
+      <option value="Google">Google</option>
+      <option value="Apple">Apple</option>
+      <option value="Microsoft">Microsoft</option>
+    </select>
+    <input type="email" name="providerEmail" placeholder="Email du compte">
+    <button class="btn">Se connecter</button>
+  </form>
+</section>
+
 </body>
 </html>
