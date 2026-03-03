@@ -1,30 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<link rel="stylesheet" href="/styles.css">
+<meta charset="UTF-8">
+<title>Profil NOVIUM</title>
+<link rel="stylesheet" href="public/styles.css">
 </head>
 <body>
 
 <header>
-<a href="/">← Retour</a>
-<h1>Profil</h1>
+  <a href="index.html">← Dashboard</a>
+  <h1>Profil</h1>
 </header>
 
-<p>Pseudo : <%= user.pseudo %></p>
-<p>Email : <%= user.email %></p>
+<main>
+  <p>Pseudo : <span id="pseudoDisplay"></span></p>
+  <p>Email : <span id="emailDisplay"></span></p>
 
-<h2>Connexions</h2>
+  <h2>Connexions</h2>
+  <ul id="connectionsList"></ul>
 
-<% if (user.connections.length === 0) { %>
-<p>Aucune connexion</p>
-<% } else { %>
-<% user.connections.forEach(conn => { %>
-<p><%= conn.provider %> : <%= conn.email %></p>
-<% }) %>
-<% } %>
+  <a href="connect.html" class="btn">Ajouter connexion</a>
+  <a href="settings.html" class="btn">Paramètres</a>
 
-<a href="/connect" class="btn">Ajouter connexion</a>
-<a href="/settings" class="btn">Paramètres</a>
+<script>
+let user = JSON.parse(localStorage.getItem("noviumUser")) || {
+  pseudo: "Guillaume",
+  email: "guillaume@email.com",
+  connections: []
+};
 
+document.getElementById("pseudoDisplay").innerText = user.pseudo;
+document.getElementById("emailDisplay").innerText = user.email;
+
+let list = document.getElementById("connectionsList");
+list.innerHTML = user.connections.length === 0 ? "<li>Aucune connexion</li>" :
+user.connections.map(c=>`<li>${c.provider} : ${c.email}</li>`).join("");
+</script>
+
+</main>
 </body>
 </html>
