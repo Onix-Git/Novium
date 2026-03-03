@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header>
+<a href="/profile">← Retour Profil</a>
+<h1>Ajouter connexion</h1>
+</header>
+
+<form action="/addConnection" method="POST">
+<select name="provider">
+<option>Google</option>
+<option>Apple</option>
+<option>Microsoft</option>
+</select>
+
+<input type="email" name="providerEmail" placeholder="Email du compte">
+<button class="btn">Se connecter</button>
+</form>
+
+</body>
+</html>
