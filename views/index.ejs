@@ -9,7 +9,9 @@
 
 <header>
   <h1>NOVIUM</h1>
-  <div class="avatar"><%= user.pseudo.charAt(0).toUpperCase() %></div>
+  <div id="openProfile" class="avatar">
+    <%= user.pseudo.charAt(0).toUpperCase() %>
+  </div>
 </header>
 
 <main>
@@ -26,38 +28,62 @@
   <% } %>
 </main>
 
-<section class="profileSection">
-  <h2>Profil</h2>
-  <p><strong>Pseudo :</strong> <%= user.pseudo %></p>
-  <p><strong>Email :</strong> <%= user.email %></p>
+<!-- MODAL PROFIL -->
+<div id="profileModal" class="modal hidden">
+  <div class="modalContent">
+    <span id="closeProfile" class="close">&times;</span>
 
-  <h3>Modifier profil</h3>
-  <form action="/updateProfile" method="POST">
-    <input type="text" name="pseudo" placeholder="Pseudo">
-    <input type="email" name="email" placeholder="Email">
-    <button class="btn">Enregistrer</button>
-  </form>
+    <h2>Profil</h2>
 
-  <h3>Connexions</h3>
-  <% if (user.connections.length === 0) { %>
-    <p>Aucune connexion</p>
-  <% } else { %>
-    <% user.connections.forEach(conn => { %>
-      <p><%= conn.provider %> : <%= conn.email %></p>
-    <% }) %>
-  <% } %>
+    <p><strong>Pseudo :</strong> <%= user.pseudo %></p>
+    <p><strong>Email :</strong> <%= user.email %></p>
 
-  <h3>Ajouter une connexion</h3>
-  <form action="/addConnection" method="POST">
-    <select name="provider">
-      <option value="Google">Google</option>
-      <option value="Apple">Apple</option>
-      <option value="Microsoft">Microsoft</option>
-    </select>
-    <input type="email" name="providerEmail" placeholder="Email du compte">
-    <button class="btn">Se connecter</button>
-  </form>
-</section>
+    <hr>
+
+    <h3>Connexions</h3>
+
+    <% if (user.connections.length === 0) { %>
+      <p>Aucune connexion</p>
+    <% } else { %>
+      <% user.connections.forEach(conn => { %>
+        <p><%= conn.provider %> : <%= conn.email %></p>
+      <% }) %>
+    <% } %>
+
+    <hr>
+
+    <h3>Ajouter une connexion</h3>
+    <form action="/addConnection" method="POST">
+      <select name="provider">
+        <option value="Google">Google</option>
+        <option value="Apple">Apple</option>
+        <option value="Microsoft">Microsoft</option>
+      </select>
+      <input type="email" name="providerEmail" placeholder="Email du compte">
+      <button class="btn">Se connecter</button>
+    </form>
+
+    <hr>
+
+    <h3>Modifier profil</h3>
+    <form action="/updateProfile" method="POST">
+      <input type="text" name="pseudo" placeholder="Nouveau pseudo">
+      <input type="email" name="email" placeholder="Nouvel email">
+      <button class="btn">Enregistrer</button>
+    </form>
+
+  </div>
+</div>
+
+<script>
+document.getElementById("openProfile").onclick = () => {
+  document.getElementById("profileModal").classList.remove("hidden")
+}
+
+document.getElementById("closeProfile").onclick = () => {
+  document.getElementById("profileModal").classList.add("hidden")
+}
+</script>
 
 </body>
 </html>
