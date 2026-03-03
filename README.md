@@ -24,18 +24,3 @@
 
 ---
 
-## 🛠 Installation & Déploiement
-
-### Option 1 : Déploiement gratuit sur Vercel
-1. Crée un compte gratuit sur [Vercel](https://vercel.com/)  
-2. Clique **Import Project → From GitHub**  
-3. Sélectionne ton repo NOVIUM  
-4. Vercel détecte automatiquement Node.js + Express  
-5. Ton site est live immédiatement 🚀  
-
-### Option 2 : Tester localement (Codespaces / Replit)
-```bash
-git clone <ton-repo-github>
-cd novium
-npm install
-npm start
